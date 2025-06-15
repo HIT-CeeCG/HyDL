@@ -1,0 +1,133 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - mutatingwebhookconfigurations
+  verbs:
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - validatingwebhookconfigurations
+  verbs:
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - config.kooperator
+  resources:
+  - clustercolocationprofile
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - scheduling.k8s.io
+  resources:
+  - priorityclasses
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - scheduling.kooperator
+  resources:
+  - podmigrationjobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - scheduling.kooperator
+  resources:
+  - podmigrationjobs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - scheduling.kooperator
+  resources:
+  - reservations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - slo.kooperator
+  resources:
+  - nodemetrics
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - slo.kooperator
+  resources:
+  - nodemetrics/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - slo.kooperator
+  resources:
+  - nodemetrics/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - slo.kooperator
+  resources:
+  - nodeslos
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - slo.kooperator
+  resources:
+  - nodeslos/status
+  verbs:
+  - get
+  - patch
+  - update
